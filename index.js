@@ -15,6 +15,7 @@ module.exports = {
     NavMenu: require('./src/widgets/navMenu'),
     NavMenuItem: require('./src/widgets/navMenuItem'),
     RadioButton: require('./src/widgets/radioButton'),
+    RadioButtonGroup: require('./src/widgets/radioButtonGroup'),
     SelectDropdown: require('./src/widgets/selectDropdown'),
     SelectList: require('./src/widgets/selectList'),
     SpinButton: require('./src/widgets/spinButton'),
