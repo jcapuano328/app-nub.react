@@ -1,8 +1,8 @@
-# app-nub.react
+# react-native-app-nub
 Common bits and pieces
 
 ### Install it
-`npm install app-nub.react`
+`npm install react-native-app-nub`
 
 ### Test it
 `npm test`
