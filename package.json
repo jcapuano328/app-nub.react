@@ -1,5 +1,5 @@
 {
-  "name": "app-nub.react",
+  "name": "react-native-app-nub",
   "version": "0.0.1",
   "description": "App components",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jcapuano328/app-nub.react.git"
+    "url": "git+https://github.com/jcapuano328/react-native-app-nub.git"
   },
   "keywords": [
     "dice",
@@ -17,9 +17,9 @@
   "author": "jeff capuano",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jcapuano328/app-nub.react/issues"
+    "url": "https://github.com/jcapuano328/react-native-app-nub/issues"
   },
-  "homepage": "https://github.com/jcapuano328/app-nub.react#readme",
+  "homepage": "https://github.com/jcapuano328/react-native-app-nub#readme",
   "dependencies": {
       "apsl-react-native-button": "^3.0.0",
       "autobind-decorator": "^1.3.3",
