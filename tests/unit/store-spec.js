@@ -32,7 +32,7 @@ describe('Store', () => {
 		env.Store = sandbox.require('../../src/stores/store', {
 			requires: {
 				"react-native-fs": env.rnfs,
-				"../services/log": env.log
+				"./log": env.log
 			}
 		});
 		env.store = env.Store(env.filename);

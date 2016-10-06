@@ -3,6 +3,7 @@
 var React = require('react');
 import { View, Text } from 'react-native';
 var IconButton = require('./iconButton');
+var Icons = require('../resources/icons');
 let iconWidth = 32, iconHeight = 32;
 
 let renderTitle = (props) => {
@@ -25,7 +26,7 @@ var TitleBar = (props) => {
             route = route || {};
             return (
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                    <IconButton image={props.logo || 'menu'} height={iconHeight} width={iconWidth} resizeMode='stretch' onPress={route.onMenu} />
+                    <IconButton image={props.logo || props.menu || Icons['menu-light']} height={iconHeight} width={iconWidth} resizeMode='stretch' onPress={route.onMenu} />
                 </View>
             );
         },
@@ -65,8 +66,8 @@ var TitleBar = (props) => {
             }
             return (
                 <View style={{flex: 1, flexDirection: 'row', marginVertical: 10}}>
-                    <IconButton image={'refreshButton'} height={iconHeight} width={iconWidth} onPress={route.onRefresh} />
-                    <IconButton image={'info'} height={iconHeight} width={iconWidth} onPress={route.onInfo} />
+                    <IconButton image={props.refresh || Icons['refresh-light']} height={iconHeight} width={iconWidth} onPress={route.onRefresh} />
+                    <IconButton image={props.info || Icons['info']} height={iconHeight} width={iconWidth} onPress={route.onInfo} />
                 </View>
             );
         }

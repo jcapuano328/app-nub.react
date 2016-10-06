@@ -3,6 +3,8 @@ module.exports = {
     Log: require('./src/services/log'),
     Range: require('./src/services/range'),
     Store: require('./src/services/store'),
+    // icons
+    Icons: require('./src/resources/icons'),
     // widgets
     Arrow: require('./src/widgets/arrow'),
     Checkbox: require('./src/widgets/checkbox'),
