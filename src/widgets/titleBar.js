@@ -35,7 +35,7 @@ var TitleBar = (props) => {
             return (
                 <View style={{flex: 1, flexDirection:'column', justifyContent: 'center', alignItems: 'flex-start'}}>
                     <Text style={{
-                          color: 'white',
+                          color: props.textcolor || 'black',
                           fontSize: 22,
                           fontWeight: 'bold',
                           //marginLeft: 10,
@@ -46,7 +46,7 @@ var TitleBar = (props) => {
                     </Text>
                     {route.subtitle
                         ? <Text style={{
-                              color: 'white',
+                              color: props.textcolor || 'black',
                               fontSize: 14,
                               //marginLeft: 10,
                               //marginVertical: 10,
