@@ -5,5 +5,7 @@ module.exports = {
 
 	"menu-light": require('./hamburger-light.png'),
 	"info-light": require('./info-light.png'),
-	"refresh-light": require('./refresh-light.png')	
+	"refresh-light": require('./refresh-light.png'),
+	"chevron-left": require('./chevron-left-light.png'),
+	"chevron-right": require('./chevron-right-light.png')
 };
