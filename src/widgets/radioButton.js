@@ -1,14 +1,15 @@
 'use strict';
 
 var React = require('react');
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, Image } from 'react-native';
 
 var RadioButton = React.createClass({
     render() {
         return (
             <TouchableOpacity onPress={this.props.onSelected}>
                 <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}} >
-                    {this.props.labelpos == 'left' ? this.renderLabel(this.props.label) : null}
+                    {this.props.labelpos == 'left' ? this.renderLabel() : null}
+                    {this.props.imagepos == 'left' ? this.renderImage() : null}
                     <View style={{
                         width: 25,
                         height: 25,
@@ -31,14 +32,35 @@ var RadioButton = React.createClass({
                             : null
                         }
                     </View>
-
-                    {this.props.labelpos != 'left' ? this.renderLabel(this.props.label) : null}
+                    {this.props.labelpos != 'left' ? this.renderLabel() : null}
+                    {this.props.imagepos != 'left' ? this.renderImage() : null}
                 </View>
             </TouchableOpacity>
         );
     },
     renderLabel(label) {
-        return (<Text style={{fontSize: 14, textAlign: 'left'}}>{label}</Text>)
+        if (this.props.label) {
+            return (
+                <Text style={{fontSize: 18, textAlign: 'left'}}>{this.props.label}</Text>
+            );
+        }
+        return null;
+    },
+    renderImage() {
+        if (this.props.image) {
+            return (
+                <Image style={{
+                        height: this.props.imageheight || 64,
+                        width: this.props.imagewidth || 64,
+                        resizeMode: 'stretch',
+                        marginLeft: 10,
+                        marginRight: 10
+                    }}
+                    source={this.props.image}
+                />
+            );
+        }
+        return null;
     }
 });
 

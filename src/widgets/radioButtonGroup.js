@@ -21,7 +21,9 @@ var RadioButtonGroup = React.createClass({
                 <View style={{flex: 1, flexDirection: dir, margin: margin, justifyContent: justify, alignItems: align, alignSelf: 'stretch'}}>
                     {this.props.buttons.map((b,i) => {
                         return (
-                            <RadioButton key={i} label={b.label} labelpos={b.labelpos} selected={b.value==this.props.state} onSelected={this.onSelected(b)} />
+                            <RadioButton key={i} label={b.label} labelpos={b.labelpos}
+                                image={b.image} imagepos={b.imagepos} imageheight={b.imageheight} imagewidth={b.imagewidth}
+                                selected={b.value==this.props.state} onSelected={this.onSelected(b)} />
                         );
                     })}
                 </View>
@@ -31,7 +33,7 @@ var RadioButtonGroup = React.createClass({
     renderLabel() {
         if (this.props.title) {
             return (
-                <Text style={{fontSize: 16, backgroundColor: 'silver', textAlign: 'center'}}>{this.props.title}</Text>
+                <Text style={{fontSize: 18, backgroundColor: 'silver', textAlign: 'center'}}>{this.props.title}</Text>
             );
         }
         return null;
