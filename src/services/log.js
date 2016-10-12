@@ -1,6 +1,7 @@
 'use strict'
 
 let levels = {
+	TRACE: 4,
 	DEBUG: 3,
 	INFO: 2,
 	WARN: 1,
@@ -13,22 +14,27 @@ module.exports = {
 	level(l) {
 		level = l;
 	},
-	debug: function(s) {
+	trace(s) {
+		if (level >= levels.TRACE) {
+			console.log(s);
+		}
+    },
+	debug(s) {
 		if (level >= levels.DEBUG) {
 			console.log(s);
 		}
     },
-	info: function(s) {
+	info(s) {
 		if (level >= levels.INFO) {
 			console.log(s);
 		}
     },
-	warn: function(s) {
+	warn(s) {
 		if (level >= levels.WARN) {
 			console.log(s);
 		}
     },
-	error: function(s) {
+	error(s) {
 		if (level >= levels.ERROR) {
 			console.error(s);
 		}

@@ -9,16 +9,16 @@ module.exports = (file) => {
 		load() {
 			// read the file
 			let path = PATH + file;
-			log.debug('Load current from ' + path);
+			log.trace('Load current from ' + path);
 			return RNFS.readFile(path)
 			.then((data) => {
 				if (data) {
-					log.debug('Data retrieved');
+					log.trace('Data retrieved');
 					data = JSON.parse(data);
-					//log.debug(data);
+					//log.trace(data);
 					return data;
 				}
-				log.debug('No data');
+				log.trace('No data');
 				return null;
 			})
 			.catch((err) => {
@@ -29,11 +29,11 @@ module.exports = (file) => {
 		save(data) {
 			// write the file
 			let path = PATH + file;
-			log.debug('Save Current to ' + path);
-			//log.debug(data);
+			log.trace('Save Current to ' + path);
+			//log.trace(data);
 			return RNFS.writeFile(path, JSON.stringify(data))
 			.then((success) => {
-				log.debug('Data saved');
+				log.trace('Data saved');
 			})
 			.catch((err) => {
 				log.warn(err.message);
@@ -41,11 +41,11 @@ module.exports = (file) => {
 		},
 		remove() {
 			let path = PATH + file;
-			log.debug('Remove from ' + path);
+			log.trace('Remove from ' + path);
 			return RNFS.unlink(path)
 			.then((result) => {
 		    	let success = result[0], ipath = result[1];
-				log.debug('FILE DELETED', success, ipath);
+				log.trace('FILE DELETED', success, ipath);
 			})
 			// `unlink` will throw an error, if the item to unlink does not exist
 			.catch((err) => {
