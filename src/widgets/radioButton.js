@@ -7,14 +7,14 @@ var RadioButton = React.createClass({
     render() {
         return (
             <TouchableOpacity onPress={this.props.onSelected}>
-                <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}} >
-                    {this.props.labelpos == 'left' ? this.renderLabel() : null}
-                    {this.props.imagepos == 'left' ? this.renderImage() : null}
+                <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} >
+                    {this.renderLabel('left')}
+                    {this.renderImage('left')}
                     <View style={{
                         width: 25,
                         height: 25,
                         borderRadius: 12.5,
-                        borderColor: 'black',
+                        borderColor: this.props.color || 'black',
                         borderWidth: 2,
                         marginTop: 3,
                         marginLeft: 5,
@@ -25,29 +25,31 @@ var RadioButton = React.createClass({
                                 width: 12.5,
                                 height: 12.5,
                                 borderRadius: 6.25,
-                                backgroundColor: 'black',
+                                backgroundColor: this.props.color || 'black',
                                 marginTop: 3.75,
                                 marginLeft: 3.75,
                             }}/>
                             : null
                         }
                     </View>
-                    {this.props.labelpos != 'left' ? this.renderLabel() : null}
-                    {this.props.imagepos != 'left' ? this.renderImage() : null}
+                    {this.renderLabel('right')}
+                    {this.renderImage('right')}
                 </View>
             </TouchableOpacity>
         );
     },
-    renderLabel(label) {
-        if (this.props.label) {
+    renderLabel(pos) {
+        let labelpos = this.props.labelpos || 'right';
+        if (this.props.label && labelpos == pos) {
             return (
-                <Text style={{fontSize: 18, textAlign: 'left'}}>{this.props.label}</Text>
+                <Text style={{fontSize: 18, textAlign: 'left'}} numberOfLines={1} adjustsFontSizeToFit={true}>{this.props.label}</Text>
             );
         }
         return null;
     },
-    renderImage() {
-        if (this.props.image) {
+    renderImage(pos) {
+        let imagepos = this.props.imagepos || 'right';
+        if (this.props.image && imagepos == pos) {
             return (
                 <Image style={{
                         height: this.props.imageheight || 64,
