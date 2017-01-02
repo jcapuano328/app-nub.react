@@ -1,7 +1,11 @@
-var React = require('react');
+import React from 'react';
 import {View, Text, Image, DatePickerAndroid, TimePickerAndroid, StyleSheet} from 'react-native';
-var IconButton = require('./iconButton');
-var moment = require('moment');
+import moment from 'moment';
+import IconButton from './iconButton';
+import Icons from '../resources';
+import GetImage  from '../services/getImage';
+let getImage = GetImage(Icons);
+
 
 var styles = StyleSheet.create({
     container: {
@@ -39,7 +43,7 @@ var DatePicker = React.createClass({
         return (
             <View style={styles.container}>
                 <Text style={styles.label}>{this.state.value.format('MMM DD, YYYY')}</Text>
-                <IconButton image={'calendar'} onPress={this.onPick} />
+                <IconButton image={getImage('calendar')} onPress={this.onPick} />
             </View>
         );
     }
@@ -62,14 +66,14 @@ var TimePicker = React.createClass({
                 this.props.onChanged && this.props.onChanged(t);
             }
         } catch ({code, message}) {
-          console.warn('Cannot open time  picker', message);
+          console.warn('Cannot open time picker', message);
         }
     },
     render() {
         return (
             <View style={styles.container}>
                 <Text style={styles.label}>{this.state.value.format('HH:mm')}</Text>
-                <IconButton image={'clock'} onPress={this.onPick} />
+                <IconButton image={getImage('clock')} onPress={this.onPick} />
             </View>
         );
     }

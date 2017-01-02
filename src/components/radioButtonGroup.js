@@ -1,8 +1,6 @@
-'use strict';
-
-var React = require('react');
+import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
-var RadioButton = require('./radioButton');
+import RadioButton from './radioButton';
 
 var RadioButtonGroup = React.createClass({
     onSelected(b) {

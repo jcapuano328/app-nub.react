@@ -2,27 +2,24 @@ module.exports = {
     // services
     Log: require('./src/services/log'),
     Range: require('./src/services/range'),
-    Store: require('./src/services/store'),
+    Repository: require('./src/services/repository'),
     // icons
-    Icons: require('./src/resources/icons'),
-    // widgets
-    Arrow: require('./src/widgets/arrow'),
-    Checkbox: require('./src/widgets/checkbox'),
-    DatetimePicker: require('./src/widgets/datetimePicker.android'),
-    DrawerLayout: require('./src/widgets/drawerLayout.android'),
-    IconButton: require('./src/widgets/iconButton'),
-    MultiSelectList: require('./src/widgets/multiSelectList'),
-    NavMenu: require('./src/widgets/navMenu'),
-    NavMenuItem: require('./src/widgets/navMenuItem'),
-    RadioButton: require('./src/widgets/radioButton'),
-    RadioButtonGroup: require('./src/widgets/radioButtonGroup'),
-    SelectDropdown: require('./src/widgets/selectDropdown'),
-    SelectList: require('./src/widgets/selectList'),
-    SpinButton: require('./src/widgets/spinButton'),
-    SpinNumeric: require('./src/widgets/spinNumeric'),
-    SpinSelect: require('./src/widgets/spinSelect'),
-    TitleBar: require('./src/widgets/titleBar'),
-    // views
-    AboutView: require('./src/views/aboutView'),
-    LandingView: require('./src/views/landingView')
+    Icons: require('./src/resources'),
+    // components
+    About: require('./src/components/about'),
+    Arrow: require('./src/components/arrow'),
+    Checkbox: require('./src/components/checkbox'),
+    DatetimePicker: require('./src/components/datetimePicker.android'),
+    DrawerLayout: require('./src/components/drawerLayout.android'),
+    IconButton: require('./src/components/iconButton'),
+    Landing: require('./src/components/landing'),
+    MultiSelectList: require('./src/components/multiSelectList'),
+    NavDrawer: require('./src/components/navDrawer'),
+    RadioButton: require('./src/components/radioButton'),
+    RadioButtonGroup: require('./src/components/radioButtonGroup'),
+    SelectDropdown: require('./src/components/selectDropdown'),
+    SelectList: require('./src/components/selectList'),
+    SpinButton: require('./src/components/spinButton'),
+    SpinNumeric: require('./src/components/spinNumeric'),
+    SpinSelect: require('./src/components/spinSelect')
 };

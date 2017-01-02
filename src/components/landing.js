@@ -1,5 +1,4 @@
-'use strict'
-var React = require('react');
+import React from 'react';
 import { View, Image } from 'react-native';
 
 var LandingView = React.createClass({

@@ -1,43 +1,44 @@
 {
-  "name": "react-native-app-nub",
+  "name": "react-native-nub",
   "version": "0.0.1",
   "description": "App components",
   "main": "index.js",
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha ./tests/unit"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jcapuano328/react-native-app-nub.git"
+    "url": "git+https://github.com/jcapuano328/react-native-nub.git"
   },
   "keywords": [
-    "dice",
-    "react"
+    "react",
+    "react-native"
   ],
   "author": "jeff capuano",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jcapuano328/react-native-app-nub/issues"
+    "url": "https://github.com/jcapuano328/react-native-nub/issues"
   },
-  "homepage": "https://github.com/jcapuano328/react-native-app-nub#readme",
+  "homepage": "https://github.com/jcapuano328/react-native-nub#readme",
   "dependencies": {
-      "apsl-react-native-button": "^3.0.0",
-      "autobind-decorator": "^1.3.3",
-      "moment": "^2.14.1",
-      "react": "^15.3.2",
-      "react-native": "^0.34.0",
-      "react-native-fs": "^1.5.1"
+    "moment": "^2.14.1",
+    "react": "^15.4.1",
+    "react-native": "^0.38.0",
+    "react-native-drawer": "^2.3.0",
+    "react-native-fs": "^1.5.1",
+    "react-native-router-flux": "^3.37.0",
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "redux-thunk": "^2.1.0"
+  },
+  "jest": {
+    "preset": "react-native"
   },
   "devDependencies": {
-      "babel-core": "^6.17.0",
-      "babel-preset-react-native": "^1.9.0",
-      "chai": "^3.5.0",
-      "chai-enzyme": "^0.5.2",
-      "enzyme": "^2.4.1",
-      "mocha": "^3.1.0",
-      "react-dom": "^15.3.2",
-      "react-native-mock": "^0.2.6",
-      "sinon": "^1.17.6",
-      "sinon-chai": "^2.8.0"
+    "babel-jest": "17.0.2",
+    "babel-preset-react-native": "1.9.0",
+    "jest": "17.0.3",
+    "react-test-renderer": "15.4.1"
   }
 }

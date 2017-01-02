@@ -1,12 +1,10 @@
-'use strict';
-
-var React = require('react');
+import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
-var Checkbox = require('./checkbox');
+import Checkbox from './checkbox';
 
 var SelectList = React.createClass({
     onSelected(item) {
-        return (b) => {            
+        return (b) => {
             this.props.onChanged && this.props.onChanged(b ? (item.value||item) : null);
         }
     },

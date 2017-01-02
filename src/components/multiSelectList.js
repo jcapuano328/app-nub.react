@@ -1,8 +1,6 @@
-'use strict';
-
-var React = require('react');
+import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
-var Checkbox = require('./checkbox');
+import Checkbox from './checkbox';
 
 var MultiSelectList = React.createClass({
     onSelected(item) {

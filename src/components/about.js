@@ -1,7 +1,6 @@
 'use strict'
-var React = require('react');
+import React from 'react';
 import { View, Text, Image, TouchableNativeFeedback, Linking } from 'react-native';
-var Button = require('apsl-react-native-button');
 
 var OpenURLButton = React.createClass({
   propTypes: {
@@ -27,11 +26,7 @@ var OpenURLButton = React.createClass({
   }
 });
 
-var AboutView = React.createClass({
-    getInitialState() {
-        return {
-        };
-    },
+var About = React.createClass({
     render() {
         return (
             <View style={{
@@ -44,13 +39,14 @@ var AboutView = React.createClass({
                 borderRadius: 10,
                 borderColor: 'black',
                 borderWidth: 5,
+                marginTop: this.props.marginTop || 80,
                 margin: 50,
                 paddingLeft: 25,
                 paddingRight: 25,
                 paddingBottom: 25,
                 paddingTop: 25
             }}>
-                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start'}}>
                     <Image style={{width: 96,height: 96,resizeMode: 'stretch'}} source={this.props.logo}/>
                     <View style={{flex:1}}>
                         <Text style={{fontSize: 18,fontWeight: 'bold',marginLeft: 15}}>{this.props.title}</Text>
@@ -86,10 +82,9 @@ var AboutView = React.createClass({
                         //{/*<OpenURLButton label={d.description} url={d.url}/>*/}
                     )}
                 </View>
-                <Button onPress={this.props.onClose}>{'Close'}</Button>
             </View>
         );
     }
 });
 
-module.exports = AboutView;
+export default About;

@@ -1,6 +1,4 @@
-'use strict';
-
-var React = require('react');
+import React from 'react';
 import { View, TouchableOpacity, Text, Image } from 'react-native';
 
 var RadioButton = React.createClass({

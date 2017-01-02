@@ -1,6 +1,4 @@
-'use strict'
-
-var React = require('react');
+import React from 'react';
 import { View, Text, Picker } from 'react-native';
 
 let SelectDropdown = React.createClass({

@@ -1,8 +1,6 @@
-'use strict'
-
-var React = require('react');
+import React from 'react';
 import { View, Text } from 'react-native';
-var SpinButton = require('./spinButton');
+import SpinButton from './spinButton';
 
 var SpinSelect = React.createClass({
     render() {

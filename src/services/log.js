@@ -1,6 +1,4 @@
-'use strict'
-
-let levels = {
+const levels = {
 	TRACE: 4,
 	DEBUG: 3,
 	INFO: 2,

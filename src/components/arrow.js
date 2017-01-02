@@ -1,6 +1,4 @@
-'use strict'
-
-var React = require('react');
+import React from 'react';
 import { View } from 'react-native';
 
 var Arrow = React.createClass({
