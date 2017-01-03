@@ -2,9 +2,6 @@ import React from 'react';
 import { View, ScrollView, Text } from 'react-native';
 import IconButton from './iconButton';
 import ActionListItem from './actionListItem';
-import Icons from '../resources';
-import GetImage  from '../services/getImage';
-let getImage = GetImage(Icons);
 
 var ActionList = React.createClass({
     renderHeader() {
@@ -16,7 +13,7 @@ var ActionList = React.createClass({
                     }}>
                         <Text style={{color: this.props.titlecolor || 'black', fontSize: 22, fontWeight: 'bold', margin: 10}}>{this.props.title}</Text>
                         <View style={{flex: 1, alignItems: 'flex-end', justifyContent: 'center'}}>
-                            <IconButton image={getImage('add')} onPress={this.props.onAdd} />
+                            <IconButton image={'add'} onPress={this.props.onAdd} />
                         </View>
                     </View>
                 </View>

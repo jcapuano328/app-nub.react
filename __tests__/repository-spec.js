@@ -1,20 +1,28 @@
-'use strict';
-var chai = require('chai'),
-	expect = chai.expect,
-	sinon = require('sinon'),
-	sandbox = require('sandboxed-module');
-chai.use(require('sinon-chai'));
-
-describe('Store', () => {
+describe('Repository', () => {
 	var env = {};
 	beforeEach(() => {
 		env = {};
-		env.log = sandbox.require('../mocks/log')();
+		env.log = {
+			trace: jest.fn(),
+	    	debug: jest.fn(),
+	        info: jest.fn(),
+			warn: jest.fn(),
+			error: jest.fn(),
+			fatal: jest.fn()
+			/*
+			trace: (s) => console.log('trace',s),
+	    	debug: (s) => console.log('debug',s),
+	        info: (s) => console.log('info',s),
+	        warn: (s) => console.log('warn',s),
+	        error: (s) => console.log('error',s),
+	        fatal: (s) => console.log('fatal',s)
+			*/
+		};
 		env.rnfs = {
 			DocumentDirectoryPath: '/path/to/doc',
-			readFile: sinon.stub(),
-			writeFile: sinon.stub(),
-			unlink: sinon.stub()
+			readFile: jest.fn(),
+			writeFile: jest.fn(),
+			unlink: jest.fn()
 		};
 		env.filename = 'test.json';
 		env.data = {
@@ -28,91 +36,79 @@ describe('Store', () => {
 			}
 		};
 		env.datastr = JSON.stringify(env.data);
+		jest.mock('react-native-fs', () => env.rnfs);
+		jest.mock('../src/services/log', () => env.log);
 
-		env.Store = sandbox.require('../../src/stores/store', {
-			requires: {
-				"react-native-fs": env.rnfs,
-				"./log": env.log
-			}
-		});
-		env.store = env.Store(env.filename);
+		env.Repository = require('../src/services/repository');
+		env.repos = env.Repository(env.filename);
     });
 
 	describe('load', () => {
 		describe('found', () => {
-			beforeEach((done) => {
-				env.rnfs.readFile.returns(Promise.accept(env.datastr));
-				env.store.load()
+			beforeEach(() => {
+				env.rnfs.readFile.mockReturnValue(new Promise((resolve,reject) => resolve(env.datastr)));
+				return env.repos.load()
 				.then((data) => {
 					env.result = data;
-					done();
-				})
-				.catch(done);
+				});
 			});
 
 			it('should read the proper file', () => {
-				expect(env.rnfs.readFile).to.have.been.calledOnce;
-				expect(env.rnfs.readFile).to.have.been.calledWith(env.rnfs.DocumentDirectoryPath + '/' + env.filename);
+				expect(env.rnfs.readFile).toHaveBeenCalledTimes(1);
+				expect(env.rnfs.readFile).toHaveBeenCalledWith(env.rnfs.DocumentDirectoryPath + '/' + env.filename);
 			});
 
 			it('should parse the result into json', () => {
-				expect(env.result).to.exist;
-				expect(env.result).to.deep.equal(env.data);
+				expect(env.result).toBeDefined();
+				expect(env.result).toEqual(env.data);
 			});
 		});
 
 		describe('not found', () => {
-			beforeEach((done) => {
-				env.rnfs.readFile.returns(Promise.reject('no file found'));
-				env.store.load()
+			beforeEach(() => {
+				env.rnfs.readFile.mockReturnValue(new Promise((resolve,reject) => reject('no file found')));
+				return env.repos.load()
 				.then((data) => {
 					env.result = data;
-					done();
-				})
-				.catch(done);
+				});
 			});
 
 			it('should read the proper file', () => {
-				expect(env.rnfs.readFile).to.have.been.calledOnce;
-				expect(env.rnfs.readFile).to.have.been.calledWith(env.rnfs.DocumentDirectoryPath + '/' + env.filename);
+				expect(env.rnfs.readFile).toHaveBeenCalledTimes(1);
+				expect(env.rnfs.readFile).toHaveBeenCalledWith(env.rnfs.DocumentDirectoryPath + '/' + env.filename);
 			});
 
 			it('should return null', () => {
-				//expect(env.result).to.exist;
-				expect(env.result).to.be.null;
+				expect(env.result).toBeNull();
 			});
 		});
 	});
 
 	describe('save', () => {
-		beforeEach((done) => {
-			env.rnfs.writeFile.returns(Promise.accept());
-			env.store.save(env.data)
-			.then(done)
-			.catch(done);
+		beforeEach(() => {
+			env.rnfs.writeFile.mockReturnValue(new Promise((resolve,reject) => resolve()));
+			return env.repos.save(env.data);
 		});
 
 		it('should write the proper file', () => {
-			expect(env.rnfs.writeFile).to.have.been.calledOnce;
-			expect(env.rnfs.writeFile).to.have.been.calledWith(env.rnfs.DocumentDirectoryPath + '/' + env.filename, sinon.match.string);
+			expect(env.rnfs.writeFile).toHaveBeenCalledTimes(1);
+			expect(env.rnfs.writeFile).toHaveBeenCalledWith(env.rnfs.DocumentDirectoryPath + '/' + env.filename);
 		});
 
 		it('should convert the json to a string', () => {
-			expect(env.rnfs.writeFile).to.have.been.calledWith(sinon.match.string, env.datastr);
+			expect(env.rnfs.writeFile).toHaveBeenCalledWith(env.rnfs.DocumentDirectoryPath + '/' + env.filename, env.datastr);
 		});
 	});
 
 	describe('remove', () => {
-		beforeEach((done) => {
-			env.rnfs.unlink.returns(Promise.accept());
-			env.store.remove()
-			.then(done)
-			.catch(done);
+		beforeEach(() => {
+			env.rnfs.unlink.mockReturnValue(new Promise((resolve,reject) => resolve()));
+			return env.repos.remove();
 		});
 
 		it('should remove the proper file', () => {
-			expect(env.rnfs.unlink).to.have.been.calledOnce;
-			expect(env.rnfs.unlink).to.have.been.calledWith(env.rnfs.DocumentDirectoryPath + '/' + env.filename);
+			expect(env.rnfs.unlink).toHaveBeenCalledTimes(1);
+			expect(env.rnfs.unlink).toHaveBeenCalledWith(env.rnfs.DocumentDirectoryPath + '/' + env.filename);
 		});
 	});
 
@@ -132,11 +128,11 @@ describe('Store', () => {
 				{a: 1, b: 3}
 			];
 
-			env.actual = env.list.sort(env.store.sorter(env.orderby));
+			env.actual = env.list.sort(env.repos.sorter(env.orderby));
 		});
 
 		it('should order the list', () => {
-			expect(env.actual).to.deep.equal(env.expected);
+			expect(env.actual).toEqual(env.expected);
 		});
 	});
 
@@ -154,16 +150,16 @@ describe('Store', () => {
 				{a: 2, b: 2}
 			];
 
-			env.actual = env.list.filter(env.store.comparer(env.filter));
+			env.actual = env.list.filter(env.repos.comparer(env.filter));
 		});
 
 		it('should filter the list', () => {
-			expect(env.actual).to.deep.equal(env.expected);
+			expect(env.actual).toEqual(env.expected);
 		});
 	});
 
 	describe('select', () => {
-		beforeEach((done) => {
+		beforeEach(() => {
 			env.data = [
 				{a: 1, b: 2},
 				{a: 1, b: 3},
@@ -178,23 +174,21 @@ describe('Store', () => {
 				{a: 2, b: 2}
 			];
 
-			env.rnfs.readFile.returns(Promise.accept(env.datastr));
+			env.rnfs.readFile.mockReturnValue(new Promise((resolve,reject) => resolve(env.datastr)));
 
-			env.store.select(env.filter, env.orderby)
+			return env.repos.select(env.filter, env.orderby)
 			.then((result) => {
 				env.actual = result;
-				done();
-			})
+			});
 		});
 
 		it('should read the proper file', () => {
-			expect(env.rnfs.readFile).to.have.been.calledOnce;
-			expect(env.rnfs.readFile).to.have.been.calledWith(env.rnfs.DocumentDirectoryPath + '/' + env.filename);
+			expect(env.rnfs.readFile).toHaveBeenCalledTimes(1);
+			expect(env.rnfs.readFile).toHaveBeenCalledWith(env.rnfs.DocumentDirectoryPath + '/' + env.filename);
 		});
 
 		it('should parse the result into json, order, and filter the data', () => {
-			expect(env.actual).to.deep.equal(env.expected);
+			expect(env.actual).toEqual(env.expected);
 		});
 	});
-
 });

@@ -1,14 +1,13 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import Icons from '../resources';
 import GetImage  from '../services/getImage';
-let getImage = GetImage(Icons);
 
 var NavMenuItem = React.createClass({
     onPress() {
         this.props.onPress && this.props.onPress(this.props.item.key);
     },
     render() {
+        let getImage = GetImage(this.props.icons);
         return (
             <TouchableOpacity onPress={this.onPress}>
                 <View style={{flex: 1,backgroundColor: '#fff'}}>

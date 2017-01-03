@@ -23,7 +23,7 @@ let NavigationDrawer = React.createClass({
                 open={this.state.open}
                 onOpen={()=>this.setState({open: true})}
                 onClose={()=>this.setState({open: false})}
-                content={<NavMenu items={this.props.items} onSelect={this.onSelect} />}
+                content={<NavMenu items={this.props.items} icons={this.props.icons} onSelect={this.onSelect} />}
                 tapToClose={true}
                 openDrawerOffset={0.2}
                 panCloseMask={0.2}

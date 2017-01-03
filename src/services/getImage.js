@@ -1,8 +1,8 @@
+import Icons from '../resources';
 
-
-export default (Icons) => (image) => {
+export default (icons = Icons) => (image) => {
     if (typeof image == 'string') {
-        return Icons[image];
+        return icons[image];
     }
     return image;
 }

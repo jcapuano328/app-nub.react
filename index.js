@@ -3,6 +3,8 @@ module.exports = {
     Log: require('./src/services/log'),
     Range: require('./src/services/range'),
     Repository: require('./src/services/repository'),
+    // store
+    Store: require('./src/stores/store'),
     // icons
     Icons: require('./src/resources'),
     // components
@@ -10,7 +12,6 @@ module.exports = {
     Arrow: require('./src/components/arrow'),
     Checkbox: require('./src/components/checkbox'),
     DatetimePicker: require('./src/components/datetimePicker.android'),
-    DrawerLayout: require('./src/components/drawerLayout.android'),
     IconButton: require('./src/components/iconButton'),
     Landing: require('./src/components/landing'),
     MultiSelectList: require('./src/components/multiSelectList'),

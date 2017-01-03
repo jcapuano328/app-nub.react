@@ -1,13 +1,15 @@
 import RNFS from 'react-native-fs';
-var PATH = RNFS.DocumentDirectoryPath + '/';
 import log from './log';
+//var log = require('./log');
+//var RNFS = require('react-native-fs');
+let PATH = RNFS.DocumentDirectoryPath + '/';
 
 module.exports = (file) => {
 	return {
 		load() {
 			// read the file
 			let path = PATH + file;
-			log.trace('Load current from ' + path);
+			log.trace('Load from ' + path);
 			return RNFS.readFile(path)
 			.then((data) => {
 				if (data) {
@@ -27,7 +29,7 @@ module.exports = (file) => {
 		save(data) {
 			// write the file
 			let path = PATH + file;
-			log.trace('Save Current to ' + path);
+			log.trace('Save to ' + path);
 			//log.trace(data);
 			return RNFS.writeFile(path, JSON.stringify(data))
 			.then((success) => {

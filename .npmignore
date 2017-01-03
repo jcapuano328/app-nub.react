@@ -8,5 +8,5 @@
 .wafpickle-*
 CVS
 npm-debug.log
-test/
+__tests__/
 scripts/

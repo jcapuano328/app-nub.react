@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
+import GetImage from '../services/getImage';
+let getImage = GetImage();
 
 var IconButton = React.createClass({
     render() {
@@ -10,7 +12,7 @@ var IconButton = React.createClass({
             <TouchableOpacity onPress={this.props.onPress} style={style}>
                 <Image
                     style={{marginLeft: 5, marginRight: 5, width: this.props.width || 32, height: this.props.height || 32, resizeMode: this.props.resizeMode || 'contain'}}
-                    source={this.props.image} />
+                    source={getImage(this.props.image)} />
             </TouchableOpacity>
         );
     }

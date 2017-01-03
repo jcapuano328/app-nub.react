@@ -2,10 +2,6 @@ import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import Checkbox from './checkbox';
 import IconButton from './iconButton';
-import Icons from '../resources';
-import GetImage  from '../services/getImage';
-let getImage = GetImage(Icons);
-
 
 var ActionListItem = React.createClass({
     onStatus() {
@@ -41,8 +37,8 @@ var ActionListItem = React.createClass({
                         <Text style={{fontSize: 15,textAlign: 'left',marginLeft: 20}}>{this.props.subtitle}</Text>
                     </View>
                 </TouchableOpacity>
-                {this.props.onSelect ? <IconButton image={getImage('select')} onPress={this.onSelect} /> : null}
-                {this.props.onRemove ? <IconButton image={getImage('remove')} onPress={this.onRemove} /> : null}
+                {this.props.onSelect ? <IconButton image={'select'} onPress={this.onSelect} /> : null}
+                {this.props.onRemove ? <IconButton image={'remove'} onPress={this.onRemove} /> : null}
             </View>
         );
     }

@@ -7,7 +7,7 @@ let NavDrawerMenu = React.createClass({
         return (
             <NavMenu
                 items={this.props.items.map((item,i) =>
-                    <NavMenuItem key={i+1} item={item} onPress={this.props.onSelect} />
+                    <NavMenuItem key={i+1} item={item} icons={this.props.icons} onPress={this.props.onSelect} />
                 )}
             />
         );

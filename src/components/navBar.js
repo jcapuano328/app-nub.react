@@ -1,9 +1,6 @@
 import React, {PropTypes} from 'react';
 import { View, Text, Platform } from 'react-native';
 import IconButton from './iconButton';
-import Icons from '../resources';
-import GetImage  from '../services/getImage';
-let getImage = GetImage(Icons);
 
 let height = {
     ...Platform.select({
@@ -90,7 +87,7 @@ module.exports = (opts) => {
         renderMenuButton(props,state) {
             return (
                 <View style={this.styles.menuButton}>
-                    <IconButton image={getImage(props.logo || props.menu || opts.menu || 'menu-light')} height={iconHeight} width={iconWidth} resizeMode='stretch'
+                    <IconButton image={props.logo || props.menu || opts.menu || 'menu-light'} height={iconHeight} width={iconWidth} resizeMode='stretch'
                         onPress={this.context.drawer.toggle} />
                 </View>
             );
@@ -100,7 +97,7 @@ module.exports = (opts) => {
                 ? null
                 : (
                     <View style={this.styles.backButton}>
-                        <IconButton image={getImage(props.left || opts.left || 'chevron-left-light')} height={iconHeight} width={iconWidth} resizeMode='stretch' onPress={opts.onBack} />
+                        <IconButton image={props.left || opts.left || 'chevron-left-light'} height={iconHeight} width={iconWidth} resizeMode='stretch' onPress={opts.onBack} />
                     </View>
                 );
         },
@@ -144,8 +141,7 @@ module.exports = (opts) => {
                 <View style={this.styles.rightButton}>
                     {(opts.rightButtons || []).map((b,i) => {
                         return (
-                            <IconButton key={i} image={getImage(b.image)} height={b.height || iconHeight} width={b.width || iconWidth}
-                                onPress={() => b.onPress(this.props)} />
+                            <IconButton key={i} image={b.image} height={b.height || iconHeight} width={b.width || iconWidth} onPress={() => b.onPress(this.props)} />
                         )
                     })}
                 </View>
