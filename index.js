@@ -1,27 +1,53 @@
-module.exports = {
-    // services
-    Log: require('./src/services/log'),
-    Range: require('./src/services/range'),
-    Repository: require('./src/services/repository'),
+import Log from './src/services/log';
+import Range from './src/services/range';
+import Repository from './src/services/repository';
+// store
+import Store from './src/stores/store';
+// icons
+import Icons from './src/resources';
+// components
+import About from './src/components/about';
+import ActionList from './src/components/actionList';
+import Arrow from './src/components/arrow';
+import Checkbox from './src/components/checkbox';
+import DatetimePicker from './src/components/datetimePicker.android';
+import IconButton from './src/components/iconButton';
+import Landing from './src/components/landing';
+import MultiSelectList from './src/components/multiSelectList';
+import NavBar from './src/components/navBar';
+import NavDrawer from './src/components/navDrawer';
+import RadioButton from './src/components/radioButton';
+import RadioButtonGroup from './src/components/radioButtonGroup';
+import SelectDropdown from './src/components/selectDropdown';
+import SelectList from './src/components/selectList';
+import SpinButton from './src/components/spinButton';
+import SpinNumeric from './src/components/spinNumeric';
+import SpinSelect from './src/components/spinSelect';
+
+
+export {Log,
+    Range,
+    Repository,
     // store
-    Store: require('./src/stores/store'),
+    Store,
     // icons
-    Icons: require('./src/resources'),
+    Icons,
     // components
-    About: require('./src/components/about'),
-    Arrow: require('./src/components/arrow'),
-    Checkbox: require('./src/components/checkbox'),
-    DatetimePicker: require('./src/components/datetimePicker.android'),
-    IconButton: require('./src/components/iconButton'),
-    Landing: require('./src/components/landing'),
-    MultiSelectList: require('./src/components/multiSelectList'),
-    NavBar: require('./src/components/navBar'),
-    NavDrawer: require('./src/components/navDrawer'),
-    RadioButton: require('./src/components/radioButton'),
-    RadioButtonGroup: require('./src/components/radioButtonGroup'),
-    SelectDropdown: require('./src/components/selectDropdown'),
-    SelectList: require('./src/components/selectList'),
-    SpinButton: require('./src/components/spinButton'),
-    SpinNumeric: require('./src/components/spinNumeric'),
-    SpinSelect: require('./src/components/spinSelect')
+    About,
+    ActionList,
+    Arrow,
+    Checkbox,
+    DatetimePicker,
+    IconButton,
+    Landing,
+    MultiSelectList,
+    NavBar,
+    NavDrawer,
+    RadioButton,
+    RadioButtonGroup,
+    SelectDropdown,
+    SelectList,
+    SpinButton,
+    SpinNumeric,
+    SpinSelect
 };
