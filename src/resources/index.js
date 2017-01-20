@@ -5,6 +5,8 @@ module.exports = {
 	"home-dark": require('./home-dark.png'),
 	"chevron-left-dark": require('./chevron-left-dark.png'),
 	"chevron-right-dark": require('./chevron-right-dark.png'),
+	"calendar-dark": require('./calendar-dark.png'),
+	"clock-dark": require('./clock-dark.png'),
 
 	"menu-light": require('./hamburger-light.png'),
 	"info-light": require('./info-light.png'),
@@ -12,6 +14,8 @@ module.exports = {
 	"home-light": require('./home-light.png'),
 	"chevron-left-light": require('./chevron-left-light.png'),
 	"chevron-right-light": require('./chevron-right-light.png'),
+	"calendar-light": require('./calendar-light.png'),
+	"clock-light": require('./clock-light.png'),
 
 	"select": require('./select.png'),
 	"add": require('./add.png'),

@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
     middlewares.push(logger);
 }
 
-export default (reducer) => {
+module.exports = (reducer) => {
     const store = compose(applyMiddleware(...middlewares))(createStore)(reducer);
 
     return store;

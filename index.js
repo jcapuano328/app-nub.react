@@ -15,6 +15,7 @@ module.exports = {
     IconButton: require('./src/components/iconButton'),
     Landing: require('./src/components/landing'),
     MultiSelectList: require('./src/components/multiSelectList'),
+    NavBar: require('./src/components/navBar'),
     NavDrawer: require('./src/components/navDrawer'),
     RadioButton: require('./src/components/radioButton'),
     RadioButtonGroup: require('./src/components/radioButtonGroup'),

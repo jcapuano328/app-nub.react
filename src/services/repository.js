@@ -1,7 +1,5 @@
 import RNFS from 'react-native-fs';
 import log from './log';
-//var log = require('./log');
-//var RNFS = require('react-native-fs');
 let PATH = RNFS.DocumentDirectoryPath + '/';
 
 module.exports = (file) => {
