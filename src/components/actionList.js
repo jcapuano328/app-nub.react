@@ -13,7 +13,7 @@ var ActionList = React.createClass({
                     }}>
                         <Text style={{color: this.props.titlecolor || 'black', fontSize: 22, fontWeight: 'bold', margin: 10}}>{this.props.title}</Text>
                         <View style={{flex: 1, alignItems: 'flex-end', justifyContent: 'center'}}>
-                            <IconButton image={'add'} onPress={this.props.onAdd} />
+                            <IconButton icons={this.props.icons} image={'add'} onPress={this.props.onAdd} />
                         </View>
                     </View>
                 </View>

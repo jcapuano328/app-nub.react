@@ -4,10 +4,11 @@ import NavMenuItem from './navMenuItem';
 
 let NavDrawerMenu = React.createClass({
     render() {
+        let MenuItem = this.props.menuItem || NavMenuItem;
         return (
             <NavMenu
                 items={this.props.items.map((item,i) =>
-                    <NavMenuItem key={i+1} item={item} icons={this.props.icons} onPress={this.props.onSelect} />
+                    <MenuItem key={i+1} item={item} icons={this.props.icons} onPress={this.props.onSelect} />
                 )}
             />
         );

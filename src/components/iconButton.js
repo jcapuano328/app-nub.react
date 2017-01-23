@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
 import GetImage from '../services/getImage';
-let getImage = GetImage();
 
 var IconButton = React.createClass({
     render() {
         let style = this.props.border ? {
             borderColor: 'gray', borderRightWidth: 1, borderStyle: 'solid'
         } : null;
+        let getImage = GetImage(this.props.icons);
         return (
             <TouchableOpacity onPress={this.props.onPress} style={style}>
                 <Image

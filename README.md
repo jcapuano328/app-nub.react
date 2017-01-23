@@ -1,4 +1,4 @@
-# react-native-app-nub
+# react-native-nub
 Common bits and pieces
 
 ### Components

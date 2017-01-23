@@ -10,7 +10,8 @@ var SpinButton = React.createClass({
         return (
             <TouchableOpacity onPress={this.props.onPress} style={{flex: 1, justifyContent:'center',alignItems: 'center'}}>
                 {/*<Arrow size={this.props.size} direction={dir} />*/}
-                <Image source={Icons['chevron-'+dir+'-'+appearance]} />
+                <Image source={Icons['chevron-'+dir+'-'+appearance]}
+                    style={{height: this.props.height || 32, width: this.props.width || 32, resizeMode: this.props.resizeMode || 'contain'}}/>
             </TouchableOpacity>
         );
     }

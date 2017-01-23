@@ -12,7 +12,11 @@ let NavigationDrawer = React.createClass({
     onSelect(e) {
         //this.setState({open:false});
         this.drawer.close();
-        Actions[e] && Actions[e]();
+        if (this.props.onSelect) {            
+            this.props.onSelect(e);
+        } else if (Actions[e]) {
+            Actions[e]();
+        }
     },
     render(){
         return (
@@ -23,7 +27,7 @@ let NavigationDrawer = React.createClass({
                 open={this.state.open}
                 onOpen={()=>this.setState({open: true})}
                 onClose={()=>this.setState({open: false})}
-                content={<NavMenu items={this.props.items} icons={this.props.icons} onSelect={this.onSelect} />}
+                content={this.renderContent()}
                 tapToClose={true}
                 openDrawerOffset={0.2}
                 panCloseMask={0.2}
@@ -33,6 +37,14 @@ let NavigationDrawer = React.createClass({
             })}>
                 {this.props.children}
             </Drawer>
+        );
+    },
+    renderContent() {
+        if (this.props.content) {
+            return this.props.content;
+        }
+        return (
+            <NavMenu menuItem={this.props.menuItem} items={this.props.items} icons={this.props.icons} onSelect={this.onSelect} />
         );
     }
 });

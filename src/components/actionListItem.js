@@ -37,8 +37,8 @@ var ActionListItem = React.createClass({
                         <Text style={{fontSize: 15,textAlign: 'left',marginLeft: 20}}>{this.props.subtitle}</Text>
                     </View>
                 </TouchableOpacity>
-                {this.props.onSelect ? <IconButton image={'select'} onPress={this.onSelect} /> : null}
-                {this.props.onRemove ? <IconButton image={'remove'} onPress={this.onRemove} /> : null}
+                {this.props.onSelect ? <IconButton icons={this.props.icons} image={'select'} onPress={this.onSelect} /> : null}
+                {this.props.onRemove ? <IconButton icons={this.props.icons} image={'remove'} onPress={this.onRemove} /> : null}
             </View>
         );
     }

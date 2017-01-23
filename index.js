@@ -16,6 +16,7 @@ import Landing from './src/components/landing';
 import MultiSelectList from './src/components/multiSelectList';
 import NavBar from './src/components/navBar';
 import NavDrawer from './src/components/navDrawer';
+import NavMenu from './src/components/navMenu';
 import RadioButton from './src/components/radioButton';
 import RadioButtonGroup from './src/components/radioButtonGroup';
 import SelectDropdown from './src/components/selectDropdown';
@@ -43,6 +44,7 @@ export {Log,
     MultiSelectList,
     NavBar,
     NavDrawer,
+    NavMenu,
     RadioButton,
     RadioButtonGroup,
     SelectDropdown,

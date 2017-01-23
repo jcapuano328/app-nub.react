@@ -39,7 +39,7 @@ var DatePicker = React.createClass({
         return (
             <View style={styles.container}>
                 <Text style={styles.label}>{this.state.value.format('MMM DD, YYYY')}</Text>
-                <IconButton image={'calendar'} onPress={this.onPick} />
+                <IconButton icons={this.props.icons} image={'calendar'} onPress={this.onPick} />
             </View>
         );
     }
@@ -69,7 +69,7 @@ var TimePicker = React.createClass({
         return (
             <View style={styles.container}>
                 <Text style={styles.label}>{this.state.value.format('HH:mm')}</Text>
-                <IconButton image={'clock'} onPress={this.onPick} />
+                <IconButton icons={this.props.icons} image={'clock'} onPress={this.onPick} />
             </View>
         );
     }

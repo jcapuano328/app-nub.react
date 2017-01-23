@@ -85,19 +85,19 @@ module.exports = (opts) => {
             )
         },
         renderMenuButton(props,state) {
+            let drawer = this.context.drawer || {};
             return (
                 <View style={this.styles.menuButton}>
-                    <IconButton image={props.logo || props.menu || opts.menu || 'menu-light'} height={iconHeight} width={iconWidth} resizeMode='stretch'
-                        onPress={this.context.drawer.toggle} />
+                    <IconButton icons={props.icons || opts.icons} image={props.logo || props.menu || opts.menu || 'menu-light'} height={iconHeight} width={iconWidth} resizeMode='stretch' onPress={drawer.toggle}/>
                 </View>
             );
         },
         renderBackButton(props,state) {
-            return (state.index === 0 && (!state.parentIndex || state.parentIndex === 0))
+            return ((state.index === 0 && (!state.parentIndex || state.parentIndex === 0)) || !opts.onBack)
                 ? null
                 : (
                     <View style={this.styles.backButton}>
-                        <IconButton image={props.left || opts.left || 'chevron-left-light'} height={iconHeight} width={iconWidth} resizeMode='stretch' onPress={opts.onBack} />
+                        <IconButton icons={props.icons || opts.icons} image={props.left || opts.left || 'chevron-left-light'} height={iconHeight} width={iconWidth} resizeMode='stretch' onPress={opts.onBack} />
                     </View>
                 );
         },
@@ -141,7 +141,7 @@ module.exports = (opts) => {
                 <View style={this.styles.rightButton}>
                     {(opts.rightButtons || []).map((b,i) => {
                         return (
-                            <IconButton key={i} image={b.image} height={b.height || iconHeight} width={b.width || iconWidth} onPress={() => b.onPress(this.props)} />
+                            <IconButton key={i} icons={props.icons || opts.icons} image={b.image} height={b.height || iconHeight} width={b.width || iconWidth} onPress={() => b.onPress(this.props)} />
                         )
                     })}
                 </View>
