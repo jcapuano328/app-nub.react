@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TextInput, Text } from 'react-native';
 import SpinButton from './spinButton';
+import Font from '../services/font';
 
 let format = (v, ib) => {
     if (v != null && v != '') {
@@ -59,17 +60,18 @@ var SpinNumeric = React.createClass({
         return (
             <View style={{flex: 1,flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                 {this.props.label
-                    ? <View style={{flex: 1}}>
+                    ? <View style={{flex: 10}}>
                         <Text>{this.props.label}</Text>
                     </View>
                     : null
                 }
-                <View style={{flex: 1}}>
-                    <SpinButton size={24} direction={'prev'} onPress={this.onPrev} />
+                <View style={{flex: 5}}>
+                    <SpinButton scale={0.5} direction={'prev'} onPress={this.onPrev} />
                 </View>
-                <View style={{flex: 3, alignItems: 'center'}}>
+                <View style={{flex: 15, alignItems: 'center'}}>
                     <TextInput
-                        style={{alignSelf: 'stretch', fontSize: 18,
+                        style={{alignSelf: 'stretch',
+                                fontSize: this.props.fontSize || Font.medium(),
                                 //borderWidth: 1,borderRadius: 4,borderColor: '#E6E5ED',
                                 //backgroundColor: '#F8F8F9',
                                 justifyContent: 'center',
@@ -81,8 +83,8 @@ var SpinNumeric = React.createClass({
                         value={this.props.value}
                     />
                 </View>
-                <View style={{flex: 1}}>
-                    <SpinButton size={24} direction={'next'} onPress={this.onNext} />
+                <View style={{flex: 5}}>
+                    <SpinButton scale={0.5} direction={'next'} onPress={this.onNext} />
                 </View>
             </View>
         );

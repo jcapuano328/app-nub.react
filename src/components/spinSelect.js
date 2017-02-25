@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import SpinButton from './spinButton';
+import Font from '../services/font';
 
 var SpinSelect = React.createClass({
     render() {
@@ -13,15 +14,15 @@ var SpinSelect = React.createClass({
                     : null
                 }
                 <View style={{flex: 5}}>
-                    <SpinButton size={32} direction={'prev'} onPress={this.props.onPrev} />
+                    <SpinButton direction={'prev'} onPress={this.props.onPrev} />
                 </View>
                 <View style={{flex: 60, alignItems: 'center'}}>
-                    <Text style={{alignSelf: 'stretch', fontSize: 18, justifyContent: 'center', textAlign: 'center'}}>
+                    <Text style={{alignSelf: 'stretch', fontSize: this.props.fontSize || Font.medium(), justifyContent: 'center', textAlign: 'center'}}>
                         {this.props.value}
                     </Text>
                 </View>
                 <View style={{flex: 5}}>
-                    <SpinButton size={32} direction={'next'} onPress={this.props.onNext} />
+                    <SpinButton direction={'next'} onPress={this.props.onNext} />
                 </View>
             </View>
         );

@@ -1,6 +1,7 @@
 import Log from './src/services/log';
 import Range from './src/services/range';
 import Repository from './src/services/repository';
+import Font from './src/services/font';
 // store
 import Store from './src/stores/store';
 // icons
@@ -29,6 +30,7 @@ import SpinSelect from './src/components/spinSelect';
 export {Log,
     Range,
     Repository,
+    Font,
     // store
     Store,
     // icons

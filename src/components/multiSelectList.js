@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import Checkbox from './checkbox';
+import Font from '../services/font';
 
 var MultiSelectList = React.createClass({
     onSelected(item) {
@@ -12,13 +13,13 @@ var MultiSelectList = React.createClass({
     render() {
         return (
             <View style={{flex: 1}}>
-                <Text style={{fontSize: 18, backgroundColor: 'silver', textAlign: 'center'}}>{this.props.title}</Text>
+                <Text style={{fontSize: this.props.labelFontSize || Font.medium(), backgroundColor: 'silver', textAlign: 'center'}}>{this.props.title}</Text>
                 <ScrollView
                     automaticallyAdjustContentInsets={false}
                     scrollEventThrottle={200}>
                     {this.props.items.map((item,i) => {
                         return (
-                            <Checkbox key={i} label={item.name} selected={item.selected} onSelected={this.onSelected(item)}/>
+                            <Checkbox key={i} label={item.name} labelFontSize={item.fontSize || this.props.itemFontSize} selected={item.selected} onSelected={this.onSelected(item)}/>
                         );
                     })}
                 </ScrollView>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import RadioButton from './radioButton';
+import Font from '../services/font';
 
 var RadioButtonGroup = React.createClass({
     onSelected(b) {
@@ -13,22 +14,6 @@ var RadioButtonGroup = React.createClass({
             <View style={{flex: 1, alignSelf: 'stretch'}}>
                 {this.renderLabel()}
                 {this.renderContainer()}
-                {/*
-                    let dir = this.props.direction == 'vertical' ? 'column' : 'row';
-                    let justify = this.props.justifyContent || (dir == 'column' ? 'flex-start' : 'center');
-                    let align = this.props.justifyContent || (dir == 'column' ? 'flex-start' : 'center');
-                    let margin = dir == 'column' ? 0 : 0;
-
-                <View style={{flex: 1, flexDirection: dir, margin: margin, justifyContent: justify, alignItems: align, alignSelf: 'stretch'}}>
-                    {this.props.buttons.map((b,i) => {
-                        return (
-                            <RadioButton key={i} label={b.label} labelpos={b.labelpos}
-                                image={b.image} imagepos={b.imagepos} imageheight={b.imageheight} imagewidth={b.imagewidth}
-                                selected={b.value==this.props.state} onSelected={this.onSelected(b)} />
-                        );
-                    })}
-                </View>
-                */}
             </View>
         );
     },
@@ -39,7 +24,7 @@ var RadioButtonGroup = React.createClass({
                     contentContainerStyle={{justifyContent:'flex-start',alignItems:'flex-start'}}
                     automaticallyAdjustContentInsets={false}
                     scrollEventThrottle={200}>
-                    {this.props.buttons.map((b,i) => 
+                    {this.props.buttons.map((b,i) =>
                         <View key={i} style={{flex:1}}>
                             {this.renderButton(b,i)}
                         </View>
@@ -57,14 +42,14 @@ var RadioButtonGroup = React.createClass({
     renderLabel() {
         if (this.props.title) {
             return (
-                <Text style={{fontSize: 18, backgroundColor: 'silver', textAlign: 'center'}}>{this.props.title}</Text>
+                <Text style={{fontSize: this.props.labelFontSize || Font.medium(), backgroundColor: 'silver', textAlign: 'center'}}>{this.props.title}</Text>
             );
         }
         return null;
     },
-    renderButton(b,i) {        
+    renderButton(b,i) {
         return (
-            <RadioButton key={i} label={b.label} labelpos={b.labelpos}
+            <RadioButton key={i} label={b.label} labelpos={b.labelpos} labelFontSize={b.fontSize}
                 image={b.image} imagepos={b.imagepos} imageheight={b.imageheight} imagewidth={b.imagewidth}
                 selected={b.value==this.props.state} onSelected={this.onSelected(b)} />
         );

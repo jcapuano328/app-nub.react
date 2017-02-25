@@ -1,35 +1,71 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image } from 'react-native';
+import Font from '../services/font';
+
+var Button = React.createClass({
+    getInitialState() {
+        return {
+            x: 0,
+            y: 0,
+            width: 0,
+            height: 0,
+            viewHeight: 100
+        };
+    },
+    onLayout(e) {
+        if (//this.state.width != e.nativeEvent.layout.width ||
+            //this.state.height != e.nativeEvent.layout.height
+            this.state.width == 0
+        ) {
+            this.setState({
+                x: e.nativeEvent.layout.x,
+                y: e.nativeEvent.layout.y,
+                width: e.nativeEvent.layout.width,
+                height: e.nativeEvent.layout.height
+            });
+        }
+    },
+    render() {
+        let width = (this.state.width*0.9) || 25;
+        let height = (this.state.height*0.9) || 25;
+        let buttonsize = Math.min(width, height);        
+        return (
+            <View style={{
+                width: buttonsize,
+                height: buttonsize,
+                borderRadius: buttonsize * 0.5,
+                borderColor: this.props.color || 'black',
+                borderWidth: 2,
+                marginTop: 1,
+                marginBottom: 1,
+                marginLeft: 2,
+                marginRight: 2
+            }} onLayout={this.onLayout}>
+                {this.props.selected
+                    ? <View style={{
+                        width: buttonsize * 0.5,
+                        height: buttonsize * 0.5,
+                        borderRadius: buttonsize * 0.25,
+                        backgroundColor: this.props.color || 'black',
+                        marginTop: buttonsize / 6.66,
+                        marginLeft: buttonsize / 6.66
+                    }}/>
+                    : null
+                }
+            </View>
+        );
+    }
+});
+
 
 var RadioButton = React.createClass({
     render() {
         return (
-            <TouchableOpacity onPress={this.props.onSelected}>
+            <TouchableOpacity onPress={this.props.onSelected} onLayout={this.onLayout}>
                 <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} >
                     {this.renderLabel('left')}
                     {this.renderImage('left')}
-                    <View style={{
-                        width: 25,
-                        height: 25,
-                        borderRadius: 12.5,
-                        borderColor: this.props.color || 'black',
-                        borderWidth: 2,
-                        marginTop: 3,
-                        marginLeft: 5,
-                        marginRight: 5,
-                    }}>
-                        {this.props.selected
-                            ? <View style={{
-                                width: 12.5,
-                                height: 12.5,
-                                borderRadius: 6.25,
-                                backgroundColor: this.props.color || 'black',
-                                marginTop: 3.75,
-                                marginLeft: 3.75,
-                            }}/>
-                            : null
-                        }
-                    </View>
+                    <Button selected={this.props.selected} color={this.props.color} />
                     {this.renderLabel('right')}
                     {this.renderImage('right')}
                 </View>
@@ -40,7 +76,7 @@ var RadioButton = React.createClass({
         let labelpos = this.props.labelpos || 'right';
         if (this.props.label && labelpos == pos) {
             return (
-                <Text style={{fontSize: 18, textAlign: 'left'}} numberOfLines={1} adjustsFontSizeToFit={true}>{this.props.label}</Text>
+                <Text style={{fontSize: this.props.labelFontSize || Font.medium(), textAlign: 'left'}} numberOfLines={1} adjustsFontSizeToFit={true}>{this.props.label}</Text>
             );
         }
         return null;

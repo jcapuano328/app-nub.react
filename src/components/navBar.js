@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import { View, Text, Platform } from 'react-native';
 import IconButton from './iconButton';
+import Font from '../services/font';
 
 let height = {
     ...Platform.select({
@@ -8,11 +9,12 @@ let height = {
         height: 64,
       },
       android: {
-        height: 54,
+        //height: 54,
+        height: 44,
       },
     })
 };
-let iconWidth = 32, iconHeight = 32;//height.height;
+let imageSize = 32;//height.height;
 
 module.exports = (opts) => {
 
@@ -88,7 +90,7 @@ module.exports = (opts) => {
             let drawer = this.context.drawer || {};
             return (
                 <View style={this.styles.menuButton}>
-                    <IconButton icons={props.icons || opts.icons} image={props.logo || props.menu || opts.menu || 'menu-light'} height={iconHeight} width={iconWidth} resizeMode='stretch' onPress={drawer.toggle}/>
+                    <IconButton icons={props.icons || opts.icons} image={props.logo || props.menu || opts.menu || 'menu-light'} scale={0.5} resizeMode='stretch' onPress={drawer.toggle}/>
                 </View>
             );
         },
@@ -97,7 +99,7 @@ module.exports = (opts) => {
                 ? null
                 : (
                     <View style={this.styles.backButton}>
-                        <IconButton icons={props.icons || opts.icons} image={props.left || opts.left || 'chevron-left-light'} height={iconHeight} width={iconWidth} resizeMode='stretch' onPress={opts.onBack} />
+                        <IconButton icons={props.icons || opts.icons} image={props.left || opts.left || 'chevron-left-light'} scale={0.5} resizeMode='stretch' onPress={opts.onBack} />
                     </View>
                 );
         },
@@ -113,7 +115,7 @@ module.exports = (opts) => {
                 <View style={this.styles.title}>
                     <Text style={{
                           color: opts.textcolor || 'black',
-                          fontSize: 22,
+                          fontSize: Font.large(),
                           fontWeight: 'bold',
                           //marginLeft: 10,
                           //marginVertical: 10,
@@ -124,7 +126,7 @@ module.exports = (opts) => {
                     {props.subtitle
                         ? <Text style={{
                               color: opts.textcolor || 'black',
-                              fontSize: 14,
+                              fontSize: Font.medium(),
                               //marginLeft: 10,
                               //marginVertical: 10,
                               //color: 'blue'
@@ -141,7 +143,7 @@ module.exports = (opts) => {
                 <View style={this.styles.rightButton}>
                     {(opts.rightButtons || []).map((b,i) => {
                         return (
-                            <IconButton key={i} icons={props.icons || opts.icons} image={b.image} height={b.height || iconHeight} width={b.width || iconWidth} onPress={() => b.onPress(this.props)} />
+                            <IconButton key={i} icons={props.icons || opts.icons} image={b.image} height={b.height} width={b.width} onPress={() => b.onPress(this.props)} />
                         )
                     })}
                 </View>
