@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import SpinButton from './spinButton';
-import Font from '../services/font';
+import {Font} from '../services/style';
 
 var SpinSelect = React.createClass({
     render() {

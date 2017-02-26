@@ -1,16 +1,15 @@
 import React, {PropTypes} from 'react';
 import { View, Text, Platform } from 'react-native';
 import IconButton from './iconButton';
-import Font from '../services/font';
+import {Font,Scaling} from '../services/style';
 
 let height = {
     ...Platform.select({
       ios: {
-        height: 64,
+        height: Scaling.scale(64),
       },
       android: {
-        //height: 54,
-        height: 44,
+        height: Scaling.scale(44),//scale(54),
       },
     })
 };
@@ -120,7 +119,7 @@ module.exports = (opts) => {
                           //marginLeft: 10,
                           //marginVertical: 10,
                           //color: 'blue'
-                        }}>
+                      }}>
                       {getText(props.title)}
                     </Text>
                     {props.subtitle
@@ -130,7 +129,7 @@ module.exports = (opts) => {
                               //marginLeft: 10,
                               //marginVertical: 10,
                               //color: 'blue'
-                            }}>
+                          }}>
                             {getText(props.subtitle)}
                           </Text>
                         : null

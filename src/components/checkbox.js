@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
-import Font from '../services/font';
+import {Font} from '../services/style';
 
 var Box = React.createClass({
     getInitialState() {

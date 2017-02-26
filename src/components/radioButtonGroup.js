@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import RadioButton from './radioButton';
-import Font from '../services/font';
+import {Font} from '../services/style';
 
 var RadioButtonGroup = React.createClass({
     onSelected(b) {

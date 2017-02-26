@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TextInput, Text } from 'react-native';
 import SpinButton from './spinButton';
-import Font from '../services/font';
+import {Font} from '../services/style';
 
 let format = (v, ib) => {
     if (v != null && v != '') {

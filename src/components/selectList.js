@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import Checkbox from './checkbox';
-import Font from '../services/font';
+import {Font} from '../services/style';
 
 var SelectList = React.createClass({
     onSelected(item) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image } from 'react-native';
-import Font from '../services/font';
+import {Font} from '../services/style';
 
 var Button = React.createClass({
     getInitialState() {
@@ -28,7 +28,7 @@ var Button = React.createClass({
     render() {
         let width = (this.state.width*0.9) || 25;
         let height = (this.state.height*0.9) || 25;
-        let buttonsize = Math.min(width, height);        
+        let buttonsize = Math.min(width, height);
         return (
             <View style={{
                 width: buttonsize,

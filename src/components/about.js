@@ -1,7 +1,7 @@
 'use strict'
 import React from 'react';
 import { View, Text, Image, TouchableNativeFeedback, Linking } from 'react-native';
-import Font from '../services/font';
+import {Font} from '../services/style';
 
 var OpenURLButton = React.createClass({
   propTypes: {
