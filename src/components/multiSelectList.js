@@ -13,7 +13,10 @@ var MultiSelectList = React.createClass({
     render() {
         return (
             <View style={{flex: 1}}>
-                <Text style={{fontSize: this.props.labelFontSize || Font.medium(), backgroundColor: 'silver', textAlign: 'center'}}>{this.props.title}</Text>
+				{this.props.title
+					? <Text style={{fontSize: this.props.labelFontSize || Font.medium(), backgroundColor: 'silver', textAlign: 'center'}}>{this.props.title}</Text>
+					: null
+				}                
                 <ScrollView
                     automaticallyAdjustContentInsets={false}
                     scrollEventThrottle={200}>
