@@ -26,8 +26,8 @@ var Box = React.createClass({
         }
     },
     render() {
-        let width = 18;//(this.state.width*0.9) || 20;
-        let height = 18;//(this.state.height*0.9) || 20;
+        let width = 20;//(this.state.width*0.9) || 20;
+        let height = 20;//(this.state.height*0.9) || 20;
         let size = Math.min(width, height);
         return (
             <View style={{
@@ -71,7 +71,7 @@ var Checkbox = React.createClass({
         );
     },
     renderLabel(label) {
-        return (<Text style={{fontSize: this.props.labelFontSize || Font.smallmedium(), textAlign: 'left'}}>{label}</Text>)
+        return (<Text style={{fontSize: this.props.labelFontSize || Font.medium(), textAlign: 'left'}}>{label}</Text>)
     }
 });
 
