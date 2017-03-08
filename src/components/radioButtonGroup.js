@@ -51,7 +51,7 @@ var RadioButtonGroup = React.createClass({
         return (
             <RadioButton key={i} label={b.label} labelpos={b.labelpos} labelFontSize={b.fontSize}
                 image={b.image} imagepos={b.imagepos} imageheight={b.imageheight} imagewidth={b.imagewidth}
-                selected={b.value==this.props.state} onSelected={this.onSelected(b)} />
+                selected={b.value==this.props.state} disabled={b.disabled} onSelected={this.onSelected(b)} />
         );
     }
 });

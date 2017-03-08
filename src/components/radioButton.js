@@ -60,8 +60,9 @@ var Button = React.createClass({
 
 var RadioButton = React.createClass({
     render() {
+        let color = this.props.disabled ? 'lightgray' : this.props.color;
         return (
-            <TouchableOpacity onPress={this.props.onSelected} onLayout={this.onLayout}>
+            <TouchableOpacity disabled={this.props.disabled} onPress={this.props.onSelected} onLayout={this.onLayout}>
                 <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} >
                     {this.renderLabel('left')}
                     {this.renderImage('left')}
@@ -75,8 +76,9 @@ var RadioButton = React.createClass({
     renderLabel(pos) {
         let labelpos = this.props.labelpos || 'right';
         if (this.props.label && labelpos == pos) {
+            let color = this.props.disabled ? 'lightgray' : null;
             return (
-                <Text style={{fontSize: this.props.labelFontSize || Font.medium(), textAlign: 'left'}} numberOfLines={1} adjustsFontSizeToFit={true}>{this.props.label}</Text>
+                <Text style={{fontSize: this.props.labelFontSize || Font.medium(), color: color, textAlign: 'left'}} numberOfLines={1} adjustsFontSizeToFit={true}>{this.props.label}</Text>
             );
         }
         return null;
