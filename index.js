@@ -31,8 +31,7 @@ import SpinSelect from './src/components/spinSelect';
 export {Log,
     Range,
     Sound,
-    Style,
-    Font,
+    Style,    
     // store
     Store,
     REHYDRATE,
