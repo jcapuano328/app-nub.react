@@ -1,8 +1,9 @@
+import {REHYDRATE} from 'redux-persist/constants';
+
 import Log from './src/services/log';
 import Range from './src/services/range';
-import Repository from './src/services/repository';
+import Sound from './src/services/sound';
 import Style from './src/services/style';
-import {Font} from './src/services/style';
 // store
 import Store from './src/stores/store';
 // icons
@@ -27,15 +28,14 @@ import SpinButton from './src/components/spinButton';
 import SpinNumeric from './src/components/spinNumeric';
 import SpinSelect from './src/components/spinSelect';
 
-console.log('react-native-nub', Style);
-
 export {Log,
     Range,
-    Repository,
+    Sound,
     Style,
     Font,
     // store
     Store,
+    REHYDRATE,
     // icons
     Icons,
     // components
