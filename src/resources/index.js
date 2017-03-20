@@ -23,5 +23,8 @@ module.exports = {
 	"add": require('./add.png'),
 	"remove": require('./remove.png'),
 	"accept": require('./accept.png'),
-	"discard": require('./reject.png')
+	"discard": require('./reject.png'),
+
+	"checked": require('./check-checked.png'),
+	"unchecked": require('./check-unchecked.png')
 };

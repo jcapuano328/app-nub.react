@@ -1,34 +1,11 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image } from 'react-native';
 import {Font} from '../services/style';
+import Icons from '../resources';
 
 var Button = React.createClass({
-    getInitialState() {
-        return {
-            x: 0,
-            y: 0,
-            width: 0,
-            height: 0,
-            viewHeight: 100
-        };
-    },
-    onLayout(e) {
-        if (//this.state.width != e.nativeEvent.layout.width ||
-            //this.state.height != e.nativeEvent.layout.height
-            this.state.width == 0
-        ) {
-            this.setState({
-                x: e.nativeEvent.layout.x,
-                y: e.nativeEvent.layout.y,
-                width: e.nativeEvent.layout.width,
-                height: e.nativeEvent.layout.height
-            });
-        }
-    },
     render() {
-        let width = (this.state.width*0.9) || 25;
-        let height = (this.state.height*0.9) || 25;
-        let buttonsize = Math.min(width, height);
+        let buttonsize = this.props.size;
         return (
             <View style={{
                 width: buttonsize,
@@ -59,14 +36,43 @@ var Button = React.createClass({
 
 
 var RadioButton = React.createClass({
+    getInitialState() {
+        return {
+            x: 0,
+            y: 0,
+            width: 0,
+            height: 0,
+            viewHeight: 100
+        };
+    },
+    onLayout(e) {
+        if (//this.state.width != e.nativeEvent.layout.width ||
+            //this.state.height != e.nativeEvent.layout.height
+            this.state.height == 0
+        ) {
+            this.setState({
+                x: e.nativeEvent.layout.x,
+                y: e.nativeEvent.layout.y,
+                width: e.nativeEvent.layout.width,
+                height: e.nativeEvent.layout.height
+            });
+        }
+    },
     render() {
         let color = this.props.disabled ? 'lightgray' : this.props.color;
+        let width = 20;//(this.state.width*0.9) || 20;
+        let height = 20;//(this.state.height*0.9) || 20;
+        let buttonsize = Math.min(width, height);
+
         return (
-            <TouchableOpacity disabled={this.props.disabled} onPress={this.props.onSelected} onLayout={this.onLayout}>
-                <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} >
+            <TouchableOpacity disabled={this.props.disabled} onPress={this.props.onSelected}>
+                <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding:1}} onLayout={this.onLayout}>
                     {this.renderLabel('left')}
                     {this.renderImage('left')}
-                    <Button selected={this.props.selected} color={this.props.color} />
+                    {/*
+                    <Button size={buttonsize} selected={this.props.selected} color={this.props.color} />
+                    */}
+                    <Image style={{width: buttonsize, height: buttonsize, resizeMode: 'contain'}} source={this.props.selected ? Icons.on : Icons.off} />
                     {this.renderLabel('right')}
                     {this.renderImage('right')}
                 </View>
@@ -77,8 +83,9 @@ var RadioButton = React.createClass({
         let labelpos = this.props.labelpos || 'right';
         if (this.props.label && labelpos == pos) {
             let color = this.props.disabled ? 'lightgray' : null;
+            let style = labelpos == 'right' ? {paddingLeft:2} : {paddingRight:2};
             return (
-                <Text style={{fontSize: this.props.labelFontSize || Font.medium(), color: color, textAlign: 'left'}} numberOfLines={1} adjustsFontSizeToFit={true}>{this.props.label}</Text>
+                <Text style={[style,{fontSize: this.props.labelFontSize || Font.medium(), color: color, textAlign: 'left'}]} numberOfLines={1} adjustsFontSizeToFit={true}>{this.props.label}</Text>
             );
         }
         return null;
