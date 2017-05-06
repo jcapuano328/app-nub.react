@@ -25,6 +25,8 @@ module.exports = {
 	"accept": require('./accept.png'),
 	"discard": require('./reject.png'),
 
-	"checked": require('./check-checked.png'),
-	"unchecked": require('./check-unchecked.png')
+	"on": require('./abc_btn_radio_to_on_mtrl_015.png'),
+	"off": require('./abc_btn_radio_to_on_mtrl_000.png'),
+	"unchecked": require('./abc_btn_check_to_on_mtrl_000.png'),//check-checked.png'),
+	"checked": require('./abc_btn_check_to_on_mtrl_015.png')//check-unchecked.png')
 };
