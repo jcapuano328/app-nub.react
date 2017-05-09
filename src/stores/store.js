@@ -3,11 +3,11 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 
-module.exports = (reducer, done, nologging) => {
+module.exports = (reducer, done, logopts = {}) => {
     const middlewares = [thunk];
-    if (!nologging || process.env.NODE_ENV !== 'production') {
+    if (!logopts.nologging && process.env.NODE_ENV !== 'production') {
         const createLogger = require('redux-logger');
-        const logger = createLogger();
+        const logger = createLogger(logopts);
         middlewares.push(logger);
     }
     
