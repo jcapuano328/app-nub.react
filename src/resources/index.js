@@ -19,6 +19,9 @@ module.exports = {
 	"clock-light": require('./clock-light.png'),
 	"gear-light": require('./gear-light.png'),
 
+	"button-plus": require('./button-plus.png'),
+	"button-minus": require('./button-minus.png'),
+	
 	"select": require('./select.png'),
 	"add": require('./add.png'),
 	"remove": require('./remove.png'),

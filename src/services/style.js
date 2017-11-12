@@ -1,70 +1,112 @@
 import {PixelRatio,Dimensions,Platform} from 'react-native';
+const pixelRatio = PixelRatio.get();
+const { width, height } = Dimensions.get('window');
 
-let height = {
-    ...Platform.select({
-      ios: {
-        height: 64,
-      },
-      android: {
-        height: 54,
-      },
-    })
-};
-
-
-let scale = () => {
-    //let dimensions = Dimensions.get('window');
-    //console.log('Dimensions', dimensions);
-    //return dimensions.fontScale;
-    let ratio = PixelRatio.get();
-    //console.log('PixelRatio', ratio);
-    let factor = 1.0;
-    if (ratio == 1) {
-        factor = 2;
-    } else if (ratio > 1 && ratio <= 1.5) {
-        factor = 1.5;
-    } else if (ratio > 1.5 && ratio <= 2) {
-        factor = 1;
-    } else if (ratio > 2 && ratio <= 2.5) {
-        factor = 0.75;
-    } else if (ratio > 2.5 && ratio <= 3) {
-        factor = 0.5;
-    } else if (ratio > 3 && ratio <= 3.5) {
-        factor = 0.25;
-    } else if (ratio > 3.5) {
-        factor = 0.1;
-    }
-    return factor;
+const scale = () => {  
+    /*      
+    switch (true){
+        case (pixelRatio < 1.4):
+            return 0.8;            
+            
+        case (pixelRatio < 2.4):
+            return 1.15;
+            
+        case (pixelRatio < 3.4):
+            return 1.35;
+            
+        default:
+            return 1.5;
+      }                
+      */      
+      let factor = 1.0;
+      if (pixelRatio == 1) {
+          factor = 1;
+      } else if (pixelRatio > 1 && pixelRatio <= 1.5) {
+          factor = 1.5;
+      } else if (pixelRatio > 1.5 && pixelRatio <= 2) {
+          factor = 1;
+      } else if (pixelRatio > 2 && pixelRatio <= 2.5) {
+          factor = 1.15;//0.75;
+      } else if (pixelRatio > 2.5 && pixelRatio <= 3) {
+          factor = 1.35;
+      } else if (pixelRatio > 3 && pixelRatio <= 3.5) {
+          factor = 1.65;
+      } else if (pixelRatio > 3.5) {
+          factor = 2;
+      }
+      return factor;        
 }
-let scaled = (size) => {
+const scaledFont = (size) => {
+    if (pixelRatio < 1.4){
+        return Math.sqrt((height*height)+(width*width))*(size/175);
+      }
+    return Math.sqrt((height*height)+(width*width))*(size/100);        
+}
+
+const scaled = (size) => {
     return size * scale();
+    //return PixelRatio.getPixelSizeForLayoutSize(size);// / pixelRatio;// * scale();        
+    //return size;
 }
-let inversescaled = (size) => {
+const inversescaled = (size) => {
     return size / scale();
+}
+
+const fontscaled = (size) => {
+    /*
+    return size;
+    
+    switch(size) {
+        case 6:
+        size = 8;
+        break;
+        case 8:
+        size = 11;
+        break;
+        case 10:
+        size = 13;
+        break;
+        case 12:
+        size = 16;
+        break;
+        case 14:
+        size = 19;
+        break;
+        case 18:
+        size = 24;
+        break;
+        case 22:
+        size = 29;
+        break;
+        default:
+        break;
+    }
+    */
+    return scaled(size);
 }
 
 module.exports = {
     Font: {
         xtrasmall() {
-            return scaled(6);
+            return fontscaled(6);
         },
         small() {
-            return scaled(8);
+            return fontscaled(8);
         },
         smallmedium() {
-            return scaled(10);
+            return fontscaled(10);
         },
         medium() {
-            return scaled(12);
+            return fontscaled(12);
         },
         mediumlarge() {
-            return scaled(14);
+            return fontscaled(14);
         },
         large() {
-            return scaled(18);
+            return fontscaled(18);
         },
         xtralarge() {
-            return scaled(22);
+            return fontscaled(22);
         }
     },
     Padding: {

@@ -61,20 +61,20 @@ var SpinNumeric = React.createClass({
             <View style={{flex: 1,flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                 {this.props.label
                     ? <View style={{flex: 10}}>
-                        <Text>{this.props.label}</Text>
+                        <Text style={{fontSize: this.props.labelFontSize || Font.medium()}}>{this.props.label}</Text>
                     </View>
                     : null
                 }
                 <View style={{flex: 5}}>
-                    <SpinButton scale={0.5} direction={'prev'} onPress={this.onPrev} />
+                    <SpinButton image={this.props.imagedown||'button-minus'} scale={.9} onPress={this.onPrev} />
                 </View>
-                <View style={{flex: 15, alignItems: 'center'}}>
-                    <TextInput
-                        style={{alignSelf: 'stretch',
+                <View style={{flex: 15, justifyContent:'flex-end', alignItems: 'center'}}>
+                    <TextInput 
+                        style={{alignSelf: 'stretch',                                
                                 fontSize: this.props.fontSize || Font.medium(),
                                 //borderWidth: 1,borderRadius: 4,borderColor: '#E6E5ED',
                                 //backgroundColor: '#F8F8F9',
-                                justifyContent: 'center',
+                                justifyContent: 'flex-end',
                                 textAlign: 'center'}}
                         keyboardType={'numeric'}
                         autoCorrect={false}
@@ -84,7 +84,7 @@ var SpinNumeric = React.createClass({
                     />
                 </View>
                 <View style={{flex: 5}}>
-                    <SpinButton scale={0.5} direction={'next'} onPress={this.onNext} />
+                    <SpinButton image={this.props.imageup||'button-plus'} scale={.9} onPress={this.onNext} />
                 </View>
             </View>
         );

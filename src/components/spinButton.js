@@ -25,15 +25,17 @@ var SpinButton = React.createClass({
         }
     },
     render() {
-        let height = this.props.height || (this.state.height*(this.props.scale||.8)) || 32;
-        let width = this.props.width || (this.state.width*(this.props.scale||.8)) || 32;
-        let dir = this.props.direction == 'prev' ? 'left' : 'right';
-        let appearance = this.props.appearance || 'light';
+        let dim = Math.max(Math.min(this.state.height, this.state.width), 24);
+        //let height = this.props.height || (this.state.height*(this.props.scale||.8)) || 32;
+        //let width = this.props.width || (this.state.width*(this.props.scale||.8)) || 32;
+        let height = this.props.height || (dim*(this.props.scale||.8)) || 32;
+        let width = this.props.width || (dim*(this.props.scale||.8)) || 32;        
+        let size = Math.min(height,width)
         return (
             <TouchableOpacity onPress={this.props.onPress} style={{flex: 1, justifyContent:'center',alignItems: 'center'}}
                 onLayout={this.onLayout}>
                 {/*<Arrow size={this.props.size} direction={dir} />*/}
-                <Image source={Icons['chevron-'+dir+'-'+appearance]}
+                <Image source={Icons[this.props.image]}
                     style={{height: height, width: width, resizeMode: this.props.resizeMode || 'stretch'}}/>
             </TouchableOpacity>
         );
