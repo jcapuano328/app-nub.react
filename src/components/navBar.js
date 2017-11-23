@@ -1,19 +1,9 @@
 import React, {PropTypes} from 'react';
-import { View, Text, Platform } from 'react-native';
+import { View, Text } from 'react-native';
 import IconButton from './iconButton';
 import {Font,Scaling} from '../services/style';
 
-let height = {
-    ...Platform.select({
-      ios: {
-        height: Scaling.scale(64),
-      },
-      android: {
-        height: Scaling.scale(44),//scale(54),
-      },
-    })
-};
-let imageSize = 32;//height.height;
+const imageSize = (Scaling.titleBarHeight*.9);//32
 
 module.exports = (opts) => {
 
@@ -30,7 +20,7 @@ module.exports = (opts) => {
                 backgroundColor: '#EFEFF2',
                 paddingTop: 0,
                 top: 0,
-                height: height.height,
+                height: Scaling.titleBarHeight,
                 right: 0,
                 left: 0,
                 borderBottomWidth: 0.5,
@@ -59,7 +49,7 @@ module.exports = (opts) => {
                 flex: 2,
                 flexDirection: 'row',
                 justifyContent: 'flex-end',
-                marginVertical: 10
+                //marginVertical: 10
             }
         },
         render() {
@@ -89,7 +79,7 @@ module.exports = (opts) => {
             let drawer = this.context.drawer || {};
             return (
                 <View style={this.styles.menuButton}>
-                    <IconButton icons={props.icons || opts.icons} image={props.logo || props.menu || opts.menu || 'menu-light'} scale={0.5} resizeMode='stretch' onPress={drawer.toggle}/>
+                    <IconButton icons={props.icons || opts.icons} image={props.logo || props.menu || opts.menu || 'menu-light'} scale={0.5} height={imageSize} width={imageSize} resizeMode='stretch' onPress={drawer.toggle}/>
                 </View>
             );
         },
@@ -98,7 +88,7 @@ module.exports = (opts) => {
                 ? null
                 : (
                     <View style={this.styles.backButton}>
-                        <IconButton icons={props.icons || opts.icons} image={props.left || opts.left || 'chevron-left-light'} scale={0.5} resizeMode='stretch' onPress={opts.onBack} />
+                        <IconButton icons={props.icons || opts.icons} image={props.left || opts.left || 'chevron-left-light'} scale={0.5} height={imageSize} width={imageSize} resizeMode='stretch' onPress={opts.onBack} />
                     </View>
                 );
         },
@@ -114,7 +104,7 @@ module.exports = (opts) => {
                 <View style={this.styles.title}>
                     <Text style={{
                           color: opts.textcolor || 'black',
-                          fontSize: Font.large(),
+                          fontSize: Font.title(),
                           fontWeight: 'bold',
                           //marginLeft: 10,
                           //marginVertical: 10,
@@ -125,7 +115,7 @@ module.exports = (opts) => {
                     {props.subtitle
                         ? <Text style={{
                               color: opts.textcolor || 'black',
-                              fontSize: Font.medium(),
+                              fontSize: Font.subtitle(),
                               //marginLeft: 10,
                               //marginVertical: 10,
                               //color: 'blue'
@@ -142,7 +132,7 @@ module.exports = (opts) => {
                 <View style={this.styles.rightButton}>
                     {(opts.rightButtons || []).map((b,i) => {
                         return (
-                            <IconButton key={i} icons={props.icons || opts.icons} image={b.image} height={b.height} width={b.width} onPress={() => b.onPress(this.props)} />
+                            <IconButton key={i} icons={props.icons || opts.icons} image={b.image} height={b.height||imageSize} width={b.width||imageSize} onPress={() => b.onPress(this.props)} />
                         )
                     })}
                 </View>
